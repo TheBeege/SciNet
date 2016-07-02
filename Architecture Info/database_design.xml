@@ -41,6 +41,7 @@
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default><relation table="article_author" row="author_id" />
+<relation table="author_instution" row="author_id" />
 </row>
 <row name="first_name" null="0" autoincrement="0">
 <datatype>VARCHAR</datatype>
@@ -100,7 +101,7 @@
 <part>author_id</part>
 </key>
 </table>
-<table x="81" y="461" name="title">
+<table x="72" y="556" name="title">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -180,6 +181,33 @@
 <part>concept_id</part>
 <part>locale_id</part>
 <part>tag_id</part>
+</key>
+</table>
+<table x="35" y="418" name="institution">
+<row name="id" null="1" autoincrement="1">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="author_instution" row="institution_id" />
+</row>
+<row name="name" null="0" autoincrement="0">
+<datatype>VARCHAR</datatype>
+<default>'NULL'</default></row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
+<key type="UNIQUE" name="institution_name">
+<part>name</part>
+</key>
+</table>
+<table x="21" y="307" name="author_instution">
+<row name="author_id" null="0" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="institution_id" null="0" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<key type="PRIMARY" name="">
+<part>author_id</part>
+<part>institution_id</part>
 </key>
 </table>
 </sql>
