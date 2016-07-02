@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- SQL XML created by WWW SQL Designer, https://github.com/ondras/wwwsqldesigner/ -->
+<!-- Active URL: http://ondras.zarovi.cz/sql/demo/?keyword=default -->
+<sql>
+<datatypes db="mysql">
+	<group color="rgb(238,238,170)" label="Numeric">
+		<type sql="INTEGER" label="Integer" quote="" length="0"/>
+	 	<type sql="TINYINT" label="TINYINT" quote="" length="0"/>
+	 	<type sql="SMALLINT" label="SMALLINT" quote="" length="0"/>
+	 	<type sql="MEDIUMINT" label="MEDIUMINT" quote="" length="0"/>
+	 	<type sql="INT" label="INT" quote="" length="0"/>
+		<type sql="BIGINT" label="BIGINT" quote="" length="0"/>
+		<type sql="DECIMAL" label="Decimal" quote="" length="1" re="DEC"/>
+		<type sql="FLOAT" label="Single precision" quote="" length="0"/>
+		<type sql="DOUBLE" label="Double precision" quote="" length="0" re="DOUBLE"/>
+	</group>
+
+	<group color="rgb(255,200,200)" label="Character">
+		<type sql="CHAR" label="Char" quote="'" length="1"/>
+		<type sql="VARCHAR" label="Varchar" quote="'" length="1"/>
+		<type sql="MEDIUMTEXT" label="Text" quote="'" length="0" re="TEXT"/>
+		<type sql="BINARY" label="Binary" quote="'" length="1"/>
+		<type sql="VARBINARY" label="Varbinary" quote="'" length="1"/>
+		<type sql="BLOB" label="BLOB" quote="'" length="0" re="BLOB"/>
+	</group>
+
+	<group color="rgb(200,255,200)" label="Date &amp; Time">
+		<type sql="DATE" label="Date" quote="'" length="0"/>
+		<type sql="TIME" label="Time" quote="'" length="0"/>
+		<type sql="DATETIME" label="Datetime" quote="'" length="0"/>
+		<type sql="YEAR" label="Year" quote="" length="0"/>
+		<type sql="TIMESTAMP" label="Timestamp" quote="'" length="0"/>
+	</group>
+	
+	<group color="rgb(200,200,255)" label="Miscellaneous">
+		<type sql="ENUM" label="ENUM" quote="" length="1"/>
+		<type sql="SET" label="SET" quote="" length="1"/>
+		<type sql="bit" label="Bit" quote="" length="0"/>
+	</group>
+</datatypes><table x="253" y="392" name="author">
+<row name="id" null="1" autoincrement="1">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="article_author" row="author_id" />
+</row>
+<row name="first_name" null="0" autoincrement="0">
+<datatype>VARCHAR</datatype>
+<default>'NULL'</default></row>
+<row name="last_name" null="0" autoincrement="0">
+<datatype>VARCHAR</datatype>
+<default>'NULL'</default></row>
+<row name="title_id" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="title" row="id" />
+</row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
+<key type="INDEX" name="author_name">
+<part>last_name</part>
+<part>first_name</part>
+</key>
+</table>
+<table x="661" y="370" name="article">
+<row name="id" null="1" autoincrement="1">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="article_concept" row="article_id" />
+<relation table="article_author" row="article_id" />
+</row>
+<row name="doi" null="1" autoincrement="0">
+<datatype>VARCHAR</datatype>
+<default>NULL</default></row>
+<row name="title" null="1" autoincrement="0">
+<datatype>VARCHAR</datatype>
+<default>NULL</default></row>
+<row name="abstract" null="1" autoincrement="0">
+<datatype>MEDIUMTEXT</datatype>
+<default>NULL</default></row>
+<row name="location" null="1" autoincrement="0">
+<datatype>VARCHAR</datatype>
+<default>NULL</default></row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
+<key type="INDEX" name="doi">
+<part>doi</part>
+</key>
+<key type="INDEX" name="article_title">
+<part>title</part>
+</key>
+</table>
+<table x="436" y="370" name="article_author">
+<row name="article_id" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="author_id" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<key type="PRIMARY" name="">
+<part>article_id</part>
+<part>author_id</part>
+</key>
+</table>
+<table x="81" y="461" name="title">
+<row name="id" null="1" autoincrement="1">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="name" null="0" autoincrement="0">
+<datatype>VARCHAR</datatype>
+<default>'NULL'</default></row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
+<key type="UNIQUE" name="title_name">
+<part>name</part>
+</key>
+</table>
+<table x="1512" y="518" name="tag">
+<row name="id" null="1" autoincrement="1">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="concept_locale_tag" row="tag_id" />
+</row>
+<row name="name" null="1" autoincrement="0">
+<datatype>VARCHAR</datatype>
+<default>NULL</default></row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
+<key type="UNIQUE" name="tag_name">
+<part>name</part>
+</key>
+</table>
+<table x="849" y="370" name="article_concept">
+<row name="article_id" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="concept_id" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<key type="PRIMARY" name="">
+<part>article_id</part>
+<part>concept_id</part>
+</key>
+</table>
+<table x="1512" y="415" name="locale">
+<row name="id" null="1" autoincrement="1">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="concept_locale_tag" row="locale_id" />
+</row>
+<row name="name" null="1" autoincrement="0">
+<datatype>VARCHAR</datatype>
+<default>NULL</default></row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
+<key type="UNIQUE" name="locale_name">
+<part>name</part>
+</key>
+</table>
+<table x="1061" y="393" name="concept">
+<row name="id" null="1" autoincrement="1">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="article_concept" row="concept_id" />
+</row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
+</table>
+<table x="1241" y="392" name="concept_locale_tag">
+<row name="concept_id" null="0" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="concept" row="id" />
+</row>
+<row name="locale_id" null="0" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="tag_id" null="0" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<key type="PRIMARY" name="">
+<part>concept_id</part>
+<part>locale_id</part>
+<part>tag_id</part>
+</key>
+</table>
+</sql>
+
