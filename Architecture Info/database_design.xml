@@ -42,6 +42,7 @@
 <datatype>INTEGER</datatype>
 <default>NULL</default><relation table="article_author" row="author_id" />
 <relation table="author_instution" row="author_id" />
+<relation table="review" row="author_id" />
 </row>
 <row name="first_name" null="0" autoincrement="0">
 <datatype>VARCHAR</datatype>
@@ -61,11 +62,14 @@
 <part>first_name</part>
 </key>
 </table>
-<table x="661" y="370" name="article">
+<table x="659" y="370" name="article">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default><relation table="article_concept" row="article_id" />
 <relation table="article_author" row="article_id" />
+<relation table="replication" row="replication_article_id" />
+<relation table="replication" row="original_article_id" />
+<relation table="review" row="article_id" />
 </row>
 <row name="doi" null="1" autoincrement="0">
 <datatype>VARCHAR</datatype>
@@ -79,6 +83,15 @@
 <row name="location" null="1" autoincrement="0">
 <datatype>VARCHAR</datatype>
 <default>NULL</default></row>
+<row name="study_date" null="0" autoincrement="0">
+<datatype>DATE</datatype>
+<default>'NULL'</default></row>
+<row name="upload_datetime" null="0" autoincrement="0">
+<datatype>DATETIME</datatype>
+<default>'NULL'</default></row>
+<row name="is_exteral" null="0" autoincrement="0">
+<datatype>TINYINT(1)</datatype>
+<default>0</default></row>
 <key type="PRIMARY" name="">
 <part>id</part>
 </key>
@@ -210,5 +223,34 @@
 <part>institution_id</part>
 </key>
 </table>
+<table x="429" y="246" name="replication">
+<row name="original_article_id" null="0" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="replication_article_id" null="0" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<key type="PRIMARY" name="">
+<part>original_article_id</part>
+<part>replication_article_id</part>
+</key>
+</table>
+<table x="446" y="516" name="review">
+<row name="author_id" null="0" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="article_id" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="review_date" null="0" autoincrement="0">
+<datatype>DATE</datatype>
+<default>'NULL'</default></row>
+<key type="PRIMARY" name="">
+<part>author_id</part>
+<part>article_id</part>
+</key>
+<key type="INDEX" name="review_date_idx">
+<part>review_date</part>
+</key>
+</table>
 </sql>
-
