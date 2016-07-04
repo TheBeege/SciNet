@@ -33,6 +33,7 @@ Nothing special yet. We have no contribution guidelines as we are still in plann
 ## Contributors
 ### Development
 * @TheBeege
+
 ### Subject Matter Expertise
 * @anthonyselkowitz
 * @DesireeVanHaute
