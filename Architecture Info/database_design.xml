@@ -218,9 +218,14 @@
 <row name="institution_id" null="0" autoincrement="0">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
+<row name="updated" null="0" autoincrement="0">
+<datatype>DATETIME</datatype>
+<default>'NULL'</default><comment>Useful for when people change institutions</comment>
+</row>
 <key type="PRIMARY" name="">
 <part>author_id</part>
 <part>institution_id</part>
+<part>updated</part>
 </key>
 </table>
 <table x="429" y="246" name="replication">
