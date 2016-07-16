@@ -8,7 +8,7 @@ SciNet is intended to be a supplement and alternative to scientific journals. Fi
 * Easy plain-text and tag-based searching
 * Reviewer acknowledgement and recording
 * Recognition and tracking of replication studies
-* Dependency tracking
+* Dependency tracking via article citations
 
 ## Supporting Features
 * Article hosting
@@ -28,7 +28,7 @@ See Architecture Info/database_design.xml. We use [WWW SQL Designer](http://ondr
 There is currently nothing to build.
 
 # Contributing
-Nothing special yet. We have no contribution guidelines as we are still in planning stages.
+Nothing special yet. We have no contribution guidelines as we are still in planning stages. If you would like to help with planning, please hop over to the issues for this project.
 
 ## Contributors
 ### Development
